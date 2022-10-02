@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+@author: Hwayeon Kang
+Checkpoint 1
+
+"""
+import math
+volume = float(input("Volume of a sphere in mm³ : "))
+radius = (((3 * volume / (4 * math.pi))) ** (1 / 3)) / 1000      # /1000 converts mm into m
+surface_area = 4 * math.pi * radius * radius
+print("Radius is : {0} m ".format(radius))
+print("Surface area is : {0} m²".format(surface_area))
