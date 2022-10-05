@@ -7,8 +7,8 @@ Description
 Coursework (Checkpoint)
 
 Table of Contents
-/n CHeckpoint 01: basic handling of floating point numbers and mathematical functions
-/n Checkpoint 02
+Checkpoint 01: basic handling of floating point numbers and mathematical functions
+Checkpoint 02
 Checkpoint 03
 Checkpoint 04
 Checkpoint 05
