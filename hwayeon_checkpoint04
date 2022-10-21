@@ -18,28 +18,18 @@ def logpower(voltage,current):
 r = input("type the name of the file: ")
 f = open(r, "r")
 count=0
-with open(r, "r") as f:
-    lines = f.readlines()
-    for line in lines:
-        line = line.split()
-        if line[0].startswith("#"):
-            FH = np.loadtxt(lines, delimiter=',', skiprows=3)
-            xpoints.append(count)
-            count=count+1
-            val=line.split(',')
-            logpower(float(val[0]),float(val[1]))
-            print(xpoints)
-        else:
-            xpoints.append(count)
-            count=count+1
-            val=line.split(',')
-            logpower(float(val[0]),float(val[1]))
-            print(xpoints)
+for x in f:
+    li=x.strip()
+    if not li.startswith("#"):
+        xpoints.append(count)
+        count=count+1
+        val=x.split(',')
+        logpower(float(val[0]),float(val[1]))
 
 def main():
     fig = plt.figure()
     plt.plot(xpoints, ypoints)
-    fig.suptitle('Voltage-Current Graph', fontsize=20)
-    plt.xlabel('t', fontsize=18)
-    plt.ylabel('p(t)', fontsize=16)
+    fig.suptitle('Voltage-Current Graph')
+    plt.xlabel('t')
+    plt.ylabel('p(t)')
 main()
