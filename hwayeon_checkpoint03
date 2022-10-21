@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Hwayeon Kang Checkpoint 3
+
+@author: ganghwayeon
+"""
+import math
+import matplotlib.pyplot as plt     # Import the plot package as plt
+
+def shm(ω0,γ,t):
+        if γ > 2.0*ω0:                            #over damped
+            p = math.sqrt((γ*γ/4)-(ω0*ω0))
+            a = 1
+            b = γ/(2*p)
+            x = math.exp(-γ*t/2)*(a*math.cosh(p*t)+b*math.sinh(p*t))
+            print("over damped")
+            print(x)
+
+        elif γ < 2.0*ω0:                          #under damped                                
+           ω = math.sqrt((ω0*ω0)-(γ*γ/4))
+           a = 1
+           b = γ/(2*ω)
+           x = math.exp(-γ*t/2)*(a*math.cos(ω*t)+b*math.sin(ω*t))
+           print("under damped")
+           print(x)
+				
+        else:                                   #critically damped                                        
+            a = 1
+            b = γ/2
+            x = math.exp(-γ*t/2)*(a+b*t)
+            print("critically damped")
+            print(x)
+            
+        return x 
+
+def main():
+    ω0 = float(input("ω0 : "))
+    γ = float(input("γ: "))
+   
+    maxTime = 5.0*math.pi/ω0
+    plot_points = 250                   # Number of point
+    increment = maxTime/plot_points     # Increment between points
+
+    t_data = []                    # lists to hold the data
+    x_data = []
+
+    for i in range(0,plot_points): # Start of loop
+        t = increment*i            # Time
+        x = shm(ω0,γ,t)        # Get distance
+        t_data.append(t)           # Append to t list
+        x_data.append(shm(ω0, γ, t))       # Append to x list
+    print(t_data)
+    print(x_data)
+    plt.plot(t_data,x_data,"g")          # Default plot in green
+    plt.title("behaviour of a damped simple harmonic oscillator")       # Add title/lables
+    plt.xlabel("time")
+    plt.ylabel("solution for x; amplitute")
+    plt.show()                           # show the actual plot
+
+
+main()
