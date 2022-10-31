@@ -5,31 +5,57 @@ hwayeon_checkpoint04
 
 @author: ganghwayeon
 """
-
-import math
-import matplotlib.pyplot as plt
 import numpy as np
-xpoints=[]
-ypoints=[]
+import matplotlib.pyplot as plt
+import math
 
-def logpower(voltage,current):
-    ypoints.append(math.log(voltage*current))
+v0 = float(input("v0, initial value of velocity: "))
+theta = float(input("theta: "))
+beta = float(input("beta: "))
+dt = float(input("dt: "))
+g = 9.81
+xlist = [0.0]
+ylist = [0.0]
+
+def set_initial(v0, theta):
+    """ set initial conditions
+    """
+    vx0 = v0*math.cos(theta) #initial velocity in x direction
+    vy0 = v0*math.sin(theta) #initial velocity in y direction
+    x = 0.0 #position along x axis
+    y = 0.0 #position along y axis
+    vx = vx0  #velocity in x direction
+    vy = vy0 #velocity in y direction
+    return x,y,vx,vy
     
-r = input("type the name of the file: ")
-f = open(r, "r")
-count=0
-for x in f:
-    li=x.strip()
-    if not li.startswith("#"):
-        xpoints.append(count)
-        count=count+1
-        val=x.split(',')
-        logpower(float(val[0]),float(val[1]))
+def acceleration(vx, vy, beta):
+    ax=-1*beta*(math.sqrt(vx**2+vy**2))*vx
+    ay=(-1*beta*(math.sqrt(vx**2+vy**2))*vy)-g
+    return ax, ay
+
+def step_forward(x, y, vx, vy, beta, dt):
+    #range of the projectile to the terminal
+    time=np.linspace(0,100,int(100/dt))
+    for t in time:
+      #check to see if particle has reached the ground again
+      if y<0.0:
+        break
+      else:
+        #calculate accelaration at current position
+        ax=-1*beta*(math.sqrt(vx**2+vy**2))*vx
+        ay=(-1*beta*(math.sqrt(vx**2+vy**2))*vy)-g
+        #calculate resultant x,y,vx,vy after time dt
+        x+=(vx*dt)+(0.5*ax*(dt**2))
+        y+=(vy*dt)+(0.5*ay*(dt**2))
+        xlist.append(x)
+        ylist.append(y)
+        vx+=ax*dt
+        vy+=ay*dt
+    return xlist,ylist,vx,vy
 
 def main():
-    fig = plt.figure()
-    plt.plot(xpoints, ypoints)
-    fig.suptitle('Voltage-Current Graph')
-    plt.xlabel('t')
-    plt.ylabel('p(t)')
-main()
+    xlist,ylist,vx,vy,vx0,vy0 = main(v0,beta,dt,theta)
+    plt.plot(xlist,ylist)
+    plt.xlabel("Displacement in x-direction ")
+    plt.ylabel("Displacement in y-direction ")
+    plt.show()
