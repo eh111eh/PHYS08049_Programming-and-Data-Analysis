@@ -5,29 +5,28 @@ hwayeon_checkpoint 5
 
 @author: ganghwayeon
 """
-#import all necessary libraries
 import numpy as np
 import matplotlib.pyplot as plt
 import math
 
-#take input from user for Question 1
-v0=float(input())
-beta=float(input())
-dt=float(input())
-theta=float(input())
+v0 = float(input("v0, initial value of velocity: "))
+theta = float(input("theta: "))
+beta = float(input("beta: "))
+dt = float(input("dt: "))
 
 #Function calculate the positions of the particle during projetile motion
-def calculate(v0,beta,dt,theta):
-  g=9.81
-  vx0=v0*np.cos(theta) #initial velocity in x direction
-  vy0=v0*np.sin(theta) #initial velocity in y direction
-  x=0.0 #position along x axis
-  y=0.0 #position along y axis
-  vx=vx0  #velocity in x direction
-  vy=vy0 #velocity in y direction
+def main(v0,beta,dt,theta):
+  g = 9.81
+  vx0 = v0*math.cos(theta) #initial velocity in x direction
+  vy0 = v0*math.sin(theta) #initial velocity in y direction
+  x = 0.0 #position along x axis
+  y = 0.0 #position along y axis
+  vx = vx0  #velocity in x direction
+  vy = vy0 #velocity in y direction
   #list of positions
-  xlist=[0.0]
-  ylist=[0.0]
+  xlist = [0.0]
+  ylist = [0.0]
+  #range of the projectile to the terminal
   time=np.linspace(0,100,int(100/dt))
   for t in time:
     #check to see if particle has reached the ground again
@@ -45,25 +44,8 @@ def calculate(v0,beta,dt,theta):
       vx+=ax*dt
       vy+=ay*dt
   return xlist,ylist,vx,vy,vx0,vy0
-xlist,ylist,vx,vy,vx0,vy0=calculate(v0,beta,dt,theta)
+xlist,ylist,vx,vy,vx0,vy0 = main(v0,beta,dt,theta)
 plt.plot(xlist,ylist)
 plt.xlabel("Displacement in x-direction ")
 plt.ylabel("Displacement in y-direction ")
-plt.show()
-
-def KEvstheta(v0,beta,dt):
-  #list of all theta values 
-  thetalist=np.linspace(0,np.pi/2,100)
-  k_ratio=[]
-  for th in thetalist:
-    #use previous function for every theta
-    xlist,ylist,vx,vy,vx0,vy0=calculate(v0,beta,dt,th)
-    k_i=0.5*(vx0**2+vy0**2)
-    k_f=0.5*(vx**2+vy**2)
-    k_ratio.append(k_i/k_f)
-  return k_ratio,thetalist
-k_ratio,thetalist=KEvstheta(v0,beta,dt)
-plt.plot(k_ratio,thetalist)
-plt.xlabel("Ratio of Kinetic Energy ")
-plt.ylabel("Theta ")
 plt.show()
