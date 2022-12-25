@@ -11,7 +11,7 @@ CP01: Python program to calculate and print to the terminal the radius and surfa
 CP02: Python program to read in the three floating point coefficients $a$, $b$, and $c$ of the quadratic equation $ax^2+bx+c=0$ then calculate and display the roots using the standard formula for roots of quadratic being, $ri={−b±sqrt(b−4ac)}/(2a)$<br/><br/>
 CP03: Python program to explore the behaviour of a damped simple harmonic oscillator for a range of damping coefficients <br/><br/>
 CP04: Python program to read in data from a text file in a specified format, perform some simple processing and display the output using pyplot<br/><br/>
-CP05: Python programs to numerically analyse the path of a projectile under gravity and drag force. There are two tasks, one to display the trajectory and the second to display the relation between final kinetic energy and launch angle <br/><br/>
+CP05: Python program to numerically analyse the path of a projectile under gravity and drag force. There are two tasks, one to display the trajectory and the second to display the relation between final kinetic energy and launch angle <br/><br/>
 
 Data Analysis(LibreOffice)<br/>
 CP02: Using given measurements, construct the spreadsheet to determine the spring constant of a spring by timing the oscillations of a various masses fixed to the end of it.<br/><br/>
