@@ -17,7 +17,7 @@ Data Analysis(LibreOffice)<br/>
 CP02: Using given measurements, construct the spreadsheet to determine the spring constant of a spring by timing the oscillations of a various masses fixed to the end of it.<br/><br/>
 CP03: Using given measurements, determine the average decay rate(in counts/sec), and its uncertainty.<br/><br/>
 CP04.1: Using given measurements, first linearise the equation of a simple harmonic motion with the period $T$, and plot a graph showing the linearised data and the appropriate uncertainties.<br/><br/>
-CP04.2: Using given measurements, first linearise the equation of a relationship between the resistance($R$) of silicon and temperature($T$), and plot a graph showing the linearised data and the appropriate uncertainties.<br/><br/>
+CP04.2: Using given measurements, first linearise the equation of a relationship between the resistance $R$ of silicon and temperature $T$, and plot a graph showing the linearised data and the appropriate uncertainties.<br/><br/>
 CP05.1: Using LINEST, <br/>
 (i) Linearise data from CP04.1, and hence determine a value and uncertainty for $g$.<br/>
 (ii) Plot a graph showing the linearised data, the uncertainties and the best-fitting straight line.<br/>
